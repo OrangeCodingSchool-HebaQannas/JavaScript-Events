@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript UI & interaction task 2</title>
+   <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+
+    #flag-display {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 15px;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f0f4ff;
+        border-radius: 12px;
+        min-height: 150px; 
+        width: fit-content;
+    }
+
+    #flag-display img {
+        width: 240px; 
+        height: auto; 
+        
+        display: block;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    }
+
+    #flag-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+    
+    <div class="task-card">
+        <h2>Task 2 — Country Dropdown & Flag</h2>
+
+        <select id="country-select">
+            <option value="">— Select a country —</option>
+            <option value="jordan">Jordan</option>
+            <option value="usa">United States</option>
+            <option value="UK">UK</option>
+            <option value="palestine">palestine</option>
+        </select>
+
+        <div id="flag-display">
+            <span id="flag-name">No country selected</span>
+        </div>
+    </div>
+
+    <script>
+        var countryData = {
+            "jordan": 
+            { name: "Jordan", img: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Jordan.svg" },
+            "usa": 
+            { name: "United States", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/3840px-Flag_of_the_United_States.svg.png" },
+            "UK":
+             { name: "United Kingdom", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1280px-Flag_of_the_United_Kingdom_%281-2%29.svg.png" },
+            "palestine":
+             { name: "Palestine", img: "https://cdn.britannica.com/74/84674-050-AD695E2F/Flag-Palestinian-Authority-Palestine.jpg" }
+        };
+
+        var countrySelect = document.getElementById("country-select");
+        var flagDisplay = document.getElementById("flag-display");
+        var flagName = document.getElementById("flag-name");
+
+        countrySelect.addEventListener("change", function () {
+            var selected = countrySelect.value;
+
+            flagDisplay.innerHTML = "";
+
+            if (selected === "") {
+                flagDisplay.innerHTML = "<span id='flag-name'>No country selected</span>";
+                return;
+            }
+
+            var data = countryData[selected];
+
+            var img = document.createElement("img");
+            img.src = data.img;
+            img.alt = data.name;
+
+            var nameSpan = document.createElement("span");
+            nameSpan.textContent = data.name;
+
+            flagDisplay.appendChild(img);
+            flagDisplay.appendChild(nameSpan);
+        });
+    </script>
+</body>
+</html>

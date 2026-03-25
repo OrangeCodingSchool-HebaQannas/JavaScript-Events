@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript UI & interaction task 1</title>
+    <style>
+          #hover-box {
+            margin-top: 15px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="task-card">
+        <h2>Task 1 — Hover Effect</h2>
+        <div id="hover-box">Hover over me!</div>
+    </div>
+
+
+<script>
+      var hoverBox = document.getElementById("hover-box");
+
+        hoverBox.addEventListener("mouseover", function () {
+            hoverBox.style.backgroundColor = "yellow";
+            hoverBox.style.fontWeight = "bold";
+        });
+
+        hoverBox.addEventListener("mouseout", function () {
+            hoverBox.style.backgroundColor = "#f9f9f9";
+            hoverBox.style.fontWeight = "normal";
+        });
+</script>
+</body>
+</html>
